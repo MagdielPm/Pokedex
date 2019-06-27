@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hJZ-GO-qJl">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a nickname" textAlignment="center" lineBreakMode="tailTruncation" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzE-0q-non">
+                                <rect key="frame" x="90" y="309" width="140" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="F5c-X5-b8O"/>
+                                    <constraint firstAttribute="height" constant="40" id="ygg-q0-NUJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                <color key="textColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitmap.png" translatesAutoresizingMaskIntoConstraints="NO" id="ExH-Mz-Iuq">
+                                <rect key="frame" x="45" y="151" width="230" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="C9b-QT-Sp8"/>
+                                    <constraint firstAttribute="height" constant="128" id="aYy-kn-QrP"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="gvV-cB-e2g"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="nSU-0i-MMw"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igd-Tk-vVZ">
+                                <rect key="frame" x="30" y="392" width="260" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="265" id="7MQ-A5-WqK"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="Wcy-Gk-Cv6"/>
+                                    <constraint firstAttribute="height" constant="36" id="hiU-5E-vSa"/>
+                                    <constraint firstAttribute="width" constant="265" id="pFL-Fd-dnl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                <state key="normal" title="Catch´me all " backgroundImage="rectangle2.png">
+                                    <color key="titleColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gmv-5n-dGe"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fig-ST-DNh">
+                                <rect key="frame" x="30" y="352" width="260" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="265" id="ihK-US-pCd"/>
+                                    <constraint firstAttribute="height" constant="30" id="z6p-07-W8K"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.85882352941176465" green="0.15686274509803921" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fig-ST-DNh" secondAttribute="trailing" constant="30" id="FPa-0m-U9v"/>
+                            <constraint firstItem="GzE-0q-non" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="Fhs-Lt-epq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GzE-0q-non" secondAttribute="trailing" constant="90" id="HQQ-Yp-gZV"/>
+                            <constraint firstItem="GzE-0q-non" firstAttribute="top" secondItem="ExH-Mz-Iuq" secondAttribute="bottom" constant="30" id="IQ5-IV-als"/>
+                            <constraint firstItem="Igd-Tk-vVZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="IpT-k1-liS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ExH-Mz-Iuq" secondAttribute="trailing" constant="45" id="PpE-6o-dnN"/>
+                            <constraint firstItem="ExH-Mz-Iuq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="hO8-i4-9JZ"/>
+                            <constraint firstItem="GzE-0q-non" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="245" id="jqN-wv-Gup"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Igd-Tk-vVZ" secondAttribute="trailing" constant="30" id="naD-1F-5fA"/>
+                            <constraint firstItem="fig-ST-DNh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="oh1-v0-v5Z"/>
+                            <constraint firstItem="Igd-Tk-vVZ" firstAttribute="top" secondItem="fig-ST-DNh" secondAttribute="bottom" constant="10" id="szX-bk-e8i"/>
+                            <constraint firstItem="fig-ST-DNh" firstAttribute="top" secondItem="GzE-0q-non" secondAttribute="bottom" constant="3" id="xoi-tq-9fc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z34-xK-WJ4"/>
+                    <connections>
+                        <outlet property="accessButton" destination="Igd-Tk-vVZ" id="tQb-uj-LWk"/>
+                        <outlet property="nameTextField" destination="fig-ST-DNh" id="N1C-Dq-iuP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2058.75" y="32.74647887323944"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s1J-d5-JjJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hJZ-GO-qJl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dCZ-lm-YSa">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rFE-gO-7Mn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nva-l8-hMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1061.25" y="32.74647887323944"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bitmap.png" width="231" height="85"/>
+        <image name="rectangle2.png" width="266" height="36"/>
+    </resources>
+</document>
