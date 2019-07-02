@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var btnAll: UIButton!
     @IBOutlet weak var cvPokemones: UICollectionView!
     
-    let realPokemones = [Pokemon.init(number: 1, name: "Bulbasaur", type: [.grass, .poison], img: UIImage(named: "Pruebaxd")!),
+    var  realPokemones = [Pokemon.init(number: 1, name: "Bulbasaur", type: [.grass, .poison], img: UIImage(named: "Pruebaxd")!),
                          Pokemon.init(number: 2, name: "Ivysaur", type: [.grass, .poison], img: UIImage(named: "Pruebaxd")!),
                          Pokemon.init(number: 3, name: "Venusaur", type: [.grass, .poison], img: UIImage(named: "Pruebaxd")!),
                          Pokemon.init(number: 4, name: "Charmander", type: [.fire], img: UIImage(named: "Pruebaxd")!),
@@ -24,6 +24,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                          Pokemon.init(number: 8, name: "Wartortle", type: [.water], img: UIImage(named: "Pruebaxd")!),
                          Pokemon.init(number: 9, name: "Blastoise", type: [.water], img: UIImage(named: "Pruebaxd")!)]
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchImage = UIImage(named: "search")
@@ -32,7 +34,68 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cvPokemones.delegate = self
         cvPokemones.dataSource = self
         registerCell()
-
+        txtSearch.addTarget(self, action: #selector(searchRecords(_ :)), for: .editingChanged)
+    }
+    
+    func getOriginalData() -> [Pokemon]{
+        return [Pokemon.init(number: 1, name: "Bulbasaur", type: [.grass, .poison], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 2, name: "Ivysaur", type: [.grass, .poison], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 3, name: "Venusaur", type: [.grass, .poison], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 4, name: "Charmander", type: [.fire], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 5, name: "Charmeleon", type: [.fire], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 6, name: "Charizard", type: [.fire, .flying], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 7, name: "Squirtle", type: [.water], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 8, name: "Wartortle", type: [.water], img: UIImage(named: "Pruebaxd")!),
+                             Pokemon.init(number: 9, name: "Blastoise", type: [.water], img: UIImage(named: "Pruebaxd")!)]
+    }
+    
+    func searchPokemon( for  searchString: String? ){
+        realPokemones = getOriginalData()
+        var pokemonUpdate : [Pokemon] = []
+    
+        if let pokemonToSearch: String = searchString {
+            for pokes in realPokemones{
+                let range = pokes.name.lowercased().range(of: pokemonToSearch, options: .caseInsensitive, range: nil, locale: nil)
+                if range != nil {
+                    pokemonUpdate.append(pokes)
+                }
+            }
+        }
+        self.realPokemones = pokemonUpdate
+        self.cvPokemones.reloadData()
+    }
+    
+    func searchByType(name: String){
+        realPokemones = getOriginalData()
+        var pokemonUpdate : [Pokemon] = []
+        
+        if name != "ALL" {
+            for pokes in realPokemones{
+                let pokemonTypes = pokes.type.filter({ $0.title == name })
+                if !pokemonTypes.isEmpty {
+                    pokemonUpdate.append(pokes)
+                }
+            }
+            self.realPokemones = pokemonUpdate
+        }
+        
+        self.cvPokemones.reloadData()
+        
+    }
+    
+    @objc func searchRecords(_ textField: UITextField){
+        realPokemones = getOriginalData()
+        
+        if !textField.text!.isEmpty {
+            searchPokemon(for: textField.text!)
+        }else{
+            self.cvPokemones.reloadData()
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     func addImageTo(txtField: UITextField, andImage img: UIImage){
@@ -66,6 +129,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    
     func registerCell(){
         cvPokemones.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         let nib = UINib(nibName: String(describing: ListCollectionViewCell.self), bundle: nil)
@@ -75,8 +139,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBAction func changeToTypeView(_ sender: Any) {
         let storyboard = UIStoryboard(name: "TypeView", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "TypeView") as! TypeViewController
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated : true)
         
     }
+
+}
+
+extension HomeViewController: TypeViewControllerDelegate{
+    func didUserSelectFilter(name: String) {
+        searchByType(name: name)
+    }
+    
     
 }

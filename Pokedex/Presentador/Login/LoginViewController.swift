@@ -17,7 +17,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     @IBAction func changeView(_ sender: Any) {
         
         if nameTextField.text?.isEmpty ?? true{
